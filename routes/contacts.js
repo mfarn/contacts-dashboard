@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Contact = require('../models/contacts')
+const ContactsController = require('../controllers/ContactsController')
 
 router.get('/', async (req, res) => {
     try {
@@ -15,7 +16,8 @@ router.get('/:id', getContact, (req, res) => {
     res.json(res.contact)
 })
 
-router.post('/', async (req, res) => {
+router.post("/", ContactsController.store)
+/*router.post('/', async (req, res) => {
     const contact = new Contact({
             email: req.body.email,
             phone: req.body.phone,
@@ -30,9 +32,9 @@ router.post('/', async (req, res) => {
         res.status(400).json( {message: err.message })
     }
     
-})
+})*/
 
-router.patch('/:id', getContact, async (req, res) => {
+router.put('/:id', getContact, async (req, res) => {
     if (req.body.email != null) {
         res.contact.email = req.body.email
     }

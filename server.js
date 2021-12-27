@@ -1,5 +1,7 @@
-const express = require('express')
-const app = express()
+const app = require('./app')
+/*const express = require('express')
+const contactsRouter = require('./routes/contacts')
+const app = express()*/
 const mongoose = require('mongoose')
 require('dotenv').config()
 
@@ -14,12 +16,8 @@ mongoose.connect(process.env.DATABASE_URL, {
     } else {
         console.log('MongoDB Conectado com sucesso!')
     }
-})
+});
 
-app.use(express.json())
-
-const contactsRouter = require('./routes/contacts')
-app.use('/contacts', contactsRouter)
-
-
-app.listen(port, () => console.log('Server Started'))
+app.listen(port, () => {
+    console.log(`Server Started at port: ${port}`)
+});
