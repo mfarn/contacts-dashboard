@@ -10,7 +10,7 @@ const contactsSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true,
-        max: 1024,
+        max: 14,
         min: 6
     },
     dob: {
